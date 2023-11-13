@@ -89,15 +89,12 @@ const LoginForm = () => {
   };
 
   const updateButtonStatus = (email, password) => {
-    // 이메일과 비밀번호가 유효한 경우 로그인 버튼 활성화
+    //로그인 버튼 활성화
     setButtonEnabled(emailError === "" && email !== "" && password !== "");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // 여기에서 실제로 로그인 정보를 확인하고 처리해야 합니다.
-    // 이 예제에서는 간단하게 콘솔에 출력합니다.
     console.log("로그인 시도:", { email, password });
   };
 
@@ -108,7 +105,12 @@ const LoginForm = () => {
         <Content>
           <Label>
             이메일 주소
-            <Input type="email" value={email} onChange={handleEmailChange} />
+            <Input
+              placeholder="이메일을 입력하세요."
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+            />
           </Label>
           <Check>{emailError}</Check>
         </Content>
@@ -116,6 +118,7 @@ const LoginForm = () => {
           <Label>
             비밀번호
             <Input
+              placeholder="영문, 숫자, 특수문자 포함 8자 이상"
               type="password"
               value={password}
               onChange={handlePasswordChange}
