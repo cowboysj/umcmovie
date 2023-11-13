@@ -60,6 +60,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [pwError, setPasswordError] = useState("");
   const [isButtonEnabled, setButtonEnabled] = useState(false);
 
   const validateEmail = (value) => {
@@ -75,6 +76,20 @@ const LoginForm = () => {
     }
   };
 
+  const validatePassword = (value) => {
+    // 비밀번호 규칙 정의: 영문, 숫자, 특수문자 포함 8자 이상
+    const passwordRegex =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+    if (!passwordRegex.test(value)) {
+      setPasswordError(
+        "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다."
+      );
+    } else {
+      setPasswordError("");
+    }
+  };
+
   const handleEmailChange = (e) => {
     const newValue = e.target.value;
     setEmail(newValue);
@@ -85,12 +100,17 @@ const LoginForm = () => {
   const handlePasswordChange = (e) => {
     const newValue = e.target.value;
     setPassword(newValue);
+    validatePassword(newValue);
     updateButtonStatus(email, newValue);
   };
 
   const updateButtonStatus = (email, password) => {
-    //로그인 버튼 활성화
-    setButtonEnabled(emailError === "" && email !== "" && password !== "");
+    // 이메일 및 비밀번호 유효성 검사
+    const isEmailValid = emailError === "" && email !== "";
+    const isPasswordValid = pwError === "" && password !== "";
+
+    // 로그인 버튼 활성화
+    setButtonEnabled(isEmailValid && isPasswordValid);
   };
 
   const handleSubmit = (e) => {
