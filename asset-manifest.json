@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/umcmovie/static/css/main.a1759e43.css",
+    "main.js": "/umcmovie/static/js/main.343454f9.js",
+    "static/js/787.f6b2eaaf.chunk.js": "/umcmovie/static/js/787.f6b2eaaf.chunk.js",
+    "index.html": "/umcmovie/index.html",
+    "main.a1759e43.css.map": "/umcmovie/static/css/main.a1759e43.css.map",
+    "main.343454f9.js.map": "/umcmovie/static/js/main.343454f9.js.map",
+    "787.f6b2eaaf.chunk.js.map": "/umcmovie/static/js/787.f6b2eaaf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a1759e43.css",
+    "static/js/main.343454f9.js"
+  ]
+}
