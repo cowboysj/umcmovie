@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useEffect } from "react";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setId, setPw } from "../redux/loginSlice";
 
 const Div = styled.div`
   display: flex;
@@ -63,6 +67,8 @@ const LoginForm = () => {
   const [pwError, setPasswordError] = useState("");
   const [isButtonEnabled, setButtonEnabled] = useState(false);
 
+  const dispatch = useDispatch();
+
   const validateEmail = (value) => {
     // 이메일 유효성 검사 정규식
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -95,6 +101,7 @@ const LoginForm = () => {
     setEmail(newValue);
     validateEmail(newValue);
     updateButtonStatus(newValue, password);
+    dispatch(setId(newValue));
   };
 
   const handlePasswordChange = (e) => {
@@ -102,6 +109,7 @@ const LoginForm = () => {
     setPassword(newValue);
     validatePassword(newValue);
     updateButtonStatus(email, newValue);
+    dispatch(setPw(newValue));
   };
 
   const updateButtonStatus = (email, password) => {
@@ -116,6 +124,36 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("로그인 시도:", { email, password });
+  };
+
+  const userId = useSelector((state) => state.login.userId);
+  const password10 = useSelector((state) => state.login.pw);
+
+  const PostData = async () => {
+    try {
+      const endpoint = "http://localhost:3000/user/login";
+      const requestBody = {
+        id: userId,
+        pw: password10,
+      };
+
+      // axios를 사용하여 POST 요청 보내기
+      const response = await axios.post(endpoint, requestBody, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      // 응답 데이터 확인
+      console.log(response);
+    } catch (error) {
+      // 오류 처리
+      console.error("Error during POST request:", error);
+    }
+  };
+
+  const handleButtonClick = () => {
+    PostData();
   };
 
   return (
@@ -148,8 +186,9 @@ const LoginForm = () => {
 
         <SubmitButton
           type="submit"
-          disabled={!isButtonEnabled}
+          /*  disabled={!isButtonEnabled} */
           check={isButtonEnabled}
+          onClick={handleButtonClick}
         >
           확인
         </SubmitButton>

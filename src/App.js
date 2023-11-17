@@ -7,23 +7,29 @@ import NotFound from "./pages/NotFound";
 import Header from "./Components/Header";
 import MovieDetail from "./pages/MovieDetail";
 import Loginpage from "./pages/Loginpage";
+import store from "./store";
+import { Provider } from "react-redux";
+import Weather from "./week8/Weather";
 
 function App() {
   return (
-    <div className="backgroundWrap">
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movie" element={<Movies />} />
-          <Route path="/tv" element={<Tv />} />
-          <Route path="/person" element={<Celebrity />} />
-          <Route path="/*" element={<NotFound />} />
-          <Route path="/movie/:title" element={<MovieDetail />} />
-          <Route path="/login" element={<Loginpage />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Provider store={store}>
+      <div className="backgroundWrap">
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/movie" element={<Movies />} />
+            <Route path="/tv" element={<Tv />} />
+            <Route path="/person" element={<Celebrity />} />
+            <Route path="/*" element={<NotFound />} />
+            <Route path="/movie/:title" element={<MovieDetail />} />
+            <Route path="/login" element={<Loginpage />} />
+            <Route path="/weather" element={<Weather />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </Provider>
   );
 }
 
