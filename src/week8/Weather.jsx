@@ -80,7 +80,7 @@ const Weather = () => {
       />
       {weatherData ? (
         <Container>
-          <City>{cityName}</City>
+          <City>도시 이름 : {cityName}</City>
           <Temp>{converted}°C</Temp>
           <Cloud>{weatherData.weather[0].main} </Cloud>
         </Container>
