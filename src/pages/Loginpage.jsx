@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setId, setPw } from "../redux/loginSlice";
+import { setId, setPw, setToken } from "../redux/loginSlice";
 
 const Div = styled.div`
   display: flex;
@@ -145,14 +145,35 @@ const LoginForm = () => {
       });
 
       // 응답 데이터 확인
-      console.log(response);
+      console.log("Post 응답", response);
+
+      localStorage.setItem("token", response.data.result.AccessToken);
+      localStorage.setItem("id", response.data.result.userId);
+      dispatch(setToken(response.data.result.AccessToken));
     } catch (error) {
       // 오류 처리
       console.error("Error during POST request:", error);
     }
   };
 
+  const token10 = useSelector((state) => state.login.token);
+
+  const handleGet = async () => {
+    try {
+      const response = await axios.get("http://localhost:3001/user/payload", {
+        headers: {
+          Authorization: token10,
+        },
+      });
+
+      console.log("Get 응답 :", response);
+    } catch (error) {
+      console.error("오류 발생:", error);
+    }
+  };
+
   const handleButtonClick = () => {
+    console.log(userId, password10);
     PostData();
   };
 
@@ -192,6 +213,7 @@ const LoginForm = () => {
         >
           확인
         </SubmitButton>
+        <SubmitButton onClick={handleGet}>토큰 검증 </SubmitButton>
       </form>
     </Div>
   );
