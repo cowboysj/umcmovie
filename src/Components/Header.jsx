@@ -34,6 +34,12 @@ export default function Header() {
                 인물
               </Link>
             </li>
+            <li>
+              <Link className="headerButton" to="/movie2">
+                movie
+              </Link>
+            </li>
+
             <div className="loginWrap">
               <LoginControl />
             </div>

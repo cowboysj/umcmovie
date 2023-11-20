@@ -10,6 +10,7 @@ import Loginpage from "./pages/Loginpage";
 import store from "./store";
 import { Provider } from "react-redux";
 import Weather from "./week8/Weather";
+import MoviePage from "./pages/MoviePage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movie" element={<Movies />} />
+            <Route path="/movie2" element={<MoviePage />} />
             <Route path="/tv" element={<Tv />} />
             <Route path="/person" element={<Celebrity />} />
             <Route path="/*" element={<NotFound />} />
