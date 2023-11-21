@@ -21,13 +21,13 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movie" element={<Movies />} />
-            <Route path="/movie2" element={<MoviePage />} />
             <Route path="/tv" element={<Tv />} />
             <Route path="/person" element={<Celebrity />} />
             <Route path="/*" element={<NotFound />} />
             <Route path="/movie/:title" element={<MovieDetail />} />
             <Route path="/login" element={<Loginpage />} />
             <Route path="/weather" element={<Weather />} />
+            <Route path="/movie2" element={<MoviePage />} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -29,11 +29,7 @@ export default function Header() {
                 TV 프로그램
               </Link>
             </li>
-            <li>
-              <Link className="headerButton" to="/person">
-                인물
-              </Link>
-            </li>
+
             <li>
               <Link className="headerButton" to="/movie2">
                 movie

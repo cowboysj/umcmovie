@@ -5,6 +5,7 @@ import styled from "styled-components";
 const Wrap = styled.div`
   display: flex;
   margin: 2%;
+  font-family: pretendard;
 `;
 
 const Poster = styled.img`
@@ -12,6 +13,7 @@ const Poster = styled.img`
 `;
 const Title = styled.div`
   font-weight: 400;
+  margin: 1%;
 `;
 
 export default function MovieDetail() {

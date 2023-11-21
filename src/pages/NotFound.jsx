@@ -20,7 +20,7 @@ const Header = styled.div`
 const Text = styled.div`
   display: flex;
   font-weight: 500;
-  padding-bottom: 1%;
+  padding-bottom: 1.5%;
 `;
 
 const Move = styled.div`
