@@ -51,7 +51,7 @@ const SubmitButton = styled.button`
   border: none;
   outline: none;
   font-size: 15px;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   border-radius: 20px;
   height: 20%;
@@ -59,6 +59,7 @@ const SubmitButton = styled.button`
   background-color: ${({ disabled }) =>
     disabled ? "gray" : " rgba(3, 37, 65, 1)"};
   color: white;
+  margin-bottom: 5px;
 `;
 const LoginForm = () => {
   const [email, setEmail] = useState("");

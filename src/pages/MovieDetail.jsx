@@ -2,18 +2,36 @@ import { useLocation, useParams } from "react-router-dom";
 import { DOMAIN } from "../Components/Movie";
 import styled from "styled-components";
 
+const DetailWrap = styled.div`
+  width: 100%;
+  background: rgba(18, 18, 18, 0.1);
+  height: 90%;
+`;
 const Wrap = styled.div`
+  width: 70%;
+  margin: 0 auto;
   display: flex;
-  margin: 2%;
   font-family: pretendard;
 `;
 
 const Poster = styled.img`
-  width: 14%;
+  width: 20%;
+`;
+const DesWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 50%;
 `;
 const Title = styled.div`
-  font-weight: 400;
+  font-weight: 600;
   margin: 1%;
+  font-size: 30px;
+`;
+const Vote = styled.div`
+  font-weight: 500;
+  margin: 1%;
+  font-size: 16px;
 `;
 
 export default function MovieDetail() {
@@ -27,9 +45,15 @@ export default function MovieDetail() {
   console.log(state);
 
   return (
-    <Wrap>
-      <Poster src={DOMAIN + state.poster_path} alt="영화포스터" />
-      <Title>{title}</Title>
-    </Wrap>
+    <DetailWrap>
+      <Wrap>
+        <Poster src={DOMAIN + state.poster_path} alt="영화포스터" />
+        <DesWrap>
+          <Title>{title}</Title>
+          <Vote>평점 : {state.vote_average}</Vote>
+          <div>{state.overview}</div>
+        </DesWrap>
+      </Wrap>
+    </DetailWrap>
   );
 }

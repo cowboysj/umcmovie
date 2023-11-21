@@ -21,13 +21,13 @@ const Info = styled.div`
 `;
 export const DOMAIN = "https://image.tmdb.org/t/p/w1280/";
 
-export default function Movie({ title, poster_path, vote_average }) {
+export default function Movie({ title, poster_path, vote_average, overview }) {
   const navigate = useNavigate();
   const PosterUrl = `https://image.tmdb.org/t/p/w1280/${poster_path}`;
 
   const onClickImg = () => {
     navigate(`/movie/${title}`, {
-      state: { title, poster_path },
+      state: { title, poster_path, vote_average, overview },
     });
   };
 
