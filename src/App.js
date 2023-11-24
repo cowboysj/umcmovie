@@ -27,7 +27,8 @@ function App() {
             <Route path="/movie/:title" element={<MovieDetail />} />
             <Route path="/login" element={<Loginpage />} />
             <Route path="/weather" element={<Weather />} />
-            <Route path="/movie2" element={<MoviePage />} />
+            <Route path="/movie2" element={<MoviePage />} /> 
+            
           </Routes>
         </BrowserRouter>
       </div>
