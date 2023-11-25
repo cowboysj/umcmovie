@@ -1,20 +1,25 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom/dist";
 
 function LoginControl() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  /*   const [isLoggedIn, setIsLoggedIn] = useState(false); */
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    setIsLoggedIn(!isLoggedIn);
+    /*     setIsLoggedIn(!isLoggedIn); */
     navigate("/login");
   };
 
+  //토큰 있으면 사용자 정보 표시
+  const userId = useSelector((state) => state.login.userId);
+  const Token = useSelector((state) => state.login.token);
+
   return (
     <div>
-      {isLoggedIn ? (
+      {userId ? (
         <div className="login-control">
-          <button onClick={handleLoginClick}>로그아웃</button>
+          <button>{userId}님</button>
           <p>환영합니다!</p>
         </div>
       ) : (

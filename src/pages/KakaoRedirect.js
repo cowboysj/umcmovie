@@ -48,12 +48,13 @@ export function KakaoRedirect() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        console.log(data.result.user_id);
-        console.log(data.result.jwt);
-        dispatch(setId(data.result.id));
+        console.log("POST 응답", data);
+        console.log("token", data.result.token);
+        dispatch(setId(data.result.name));
         dispatch(setToken(data.result.token));
+        navigate("/");
       })
+
       .catch((error) => {
         console.error("오류 발생", error); //
       });
