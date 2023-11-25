@@ -4,13 +4,14 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setId, setPw, setToken } from "../redux/loginSlice";
+import kakao from "../img/kakao.png";
 
 const Div = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 80%;
-  height: 40%;
+  height: 45%;
   margin: 0 auto;
 `;
 const Header = styled.div`
@@ -60,6 +61,13 @@ const SubmitButton = styled.button`
     disabled ? "gray" : " rgba(3, 37, 65, 1)"};
   color: white;
   margin-bottom: 5px;
+`;
+
+const Kakao = styled.img`
+  display: flex;
+  max-width: 30%;
+  margin: 0 auto;
+  cursor: pointer;
 `;
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -178,6 +186,17 @@ const LoginForm = () => {
     PostData();
   };
 
+  //카카오 로그인
+
+  const K_REST_API_KEY = process.env.REACT_APP_K_REST_API_KEY;
+  const K_REDIRECT_URI = `http://localhost:3000/oauth`;
+  const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${K_REST_API_KEY}&redirect_uri=${K_REDIRECT_URI}&response_type=code`;
+
+  const handleKakaoLogin = () => {
+    console.log(K_REST_API_KEY);
+    window.location.href = kakaoURL;
+  };
+
   return (
     <Div>
       <Header>이메일과 비밀번호를 입력해주세요</Header>
@@ -214,7 +233,8 @@ const LoginForm = () => {
         >
           확인
         </SubmitButton>
-        <SubmitButton onClick={handleGet}>토큰 검증 </SubmitButton>
+        {/* <SubmitButton onClick={handleGet}>토큰 검증 </SubmitButton> */}
+        <Kakao onClick={handleKakaoLogin} src={kakao} />
       </form>
     </Div>
   );

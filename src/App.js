@@ -11,6 +11,8 @@ import store from "./store";
 import { Provider } from "react-redux";
 import Weather from "./week8/Weather";
 import MoviePage from "./pages/MoviePage";
+import NewLogin from "./pages/NewLogin.jsx";
+import KakaoRedirect from "./pages/KakaoRedirect.js";
 
 function App() {
   return (
@@ -26,9 +28,10 @@ function App() {
             <Route path="/*" element={<NotFound />} />
             <Route path="/movie/:title" element={<MovieDetail />} />
             <Route path="/login" element={<Loginpage />} />
+            <Route path="/login2" element={<NewLogin />} />
             <Route path="/weather" element={<Weather />} />
-            <Route path="/movie2" element={<MoviePage />} /> 
-            
+            <Route path="/movie2" element={<MoviePage />} />
+            {<Route path="/oauth" element={<KakaoRedirect />} />}
           </Routes>
         </BrowserRouter>
       </div>
