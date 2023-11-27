@@ -56,7 +56,7 @@ export function KakaoRedirect() {
       })
 
       .catch((error) => {
-        console.error("오류 발생", error); //
+        console.error("오류 발생", error); 
       });
   }, []);
 
