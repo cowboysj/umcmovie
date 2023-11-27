@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
+//8주차 미션
 const Div = styled.div`
   width: 80%;
   display: flex;
