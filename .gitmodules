@@ -1,0 +1,3 @@
+[submodule "umcmovie"]
+    path = submodules/umcmovie
+    url = https://github.com/cowboysj/umcmovie.git
