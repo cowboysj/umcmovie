@@ -20,6 +20,7 @@ export default function Movies() {
           {
             headers: {
               Authorization: `Bearer ${token}`,
+              accept: "application/json",
             },
           }
         );

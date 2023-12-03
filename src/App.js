@@ -29,7 +29,7 @@ function App() {
             <Route path="/login" element={<Loginpage />} />
             <Route path="/weather" element={<Weather />} />
             <Route path="/movie2" element={<MoviePage />} />
-            {<Route path="/oauth" element={<KakaoRedirect />} />}
+            <Route path="/oauth" element={<KakaoRedirect />} />
           </Routes>
         </BrowserRouter>
       </div>

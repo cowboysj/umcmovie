@@ -43,7 +43,7 @@ export function KakaoRedirect() {
 
   useEffect(() => {
     fetch(`http://localhost:8000/kakao?code=${code}`, {
-      method: "POST", //
+      method: "POST", 
       headers: headers,
     })
       .then((response) => response.json())
